@@ -6,8 +6,13 @@ class Program
     // есть хотя бы одна оценка и средний балл >= minAverage.
     static int CountHigh(Student[] group, double minAverage)
     {
-        // TODO: напишите решение здесь
-        return 0;
+        int count = 0;
+        foreach (Student student in group)
+        {
+            if (student.HasScores && student.Average >= minAverage)
+                count++;
+        }
+        return count;
     }
 
     // Верните НОВЫЙ массив только из студентов с высоким баллом (правило то же, что в CountHigh),
@@ -15,8 +20,14 @@ class Program
     // Новые объекты Student не создавайте: кладите в массив те же ссылки из group.
     static Student[] FindHigh(Student[] group, double minAverage)
     {
-        // TODO: напишите решение здесь
-        return new Student[0];
+        Student[] high = new Student[CountHigh(group, minAverage)];
+        int index = 0;
+        foreach (Student student in group)
+        {
+            if (student.HasScores && student.Average >= minAverage)
+                high[index++] = student;
+        }
+        return high;
     }
 
     static void Main()
